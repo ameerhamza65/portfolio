@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Lock, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Lock, ArrowUpRight } from 'lucide-react';
 
 interface ProjectCardData {
   id: string;
@@ -113,7 +113,7 @@ export const ProjectTiltStack: React.FC = () => {
     setHoveredCardId(null);
   };
 
-  const handleCardClick = (projectId: string) => {
+  const handleCardClick = (_projectId: string) => {
     const targetSection = document.getElementById('projects');
     if (targetSection) {
       targetSection.scrollIntoView({ behavior: 'smooth' });
@@ -178,34 +178,33 @@ export const ProjectTiltStack: React.FC = () => {
               animate={
                 isTouchDevice
                   ? {
-                      y: [0, index % 2 === 0 ? -6 : 6, 0],
-                      scale: project.baseScale,
-                      rotate: project.baseRotate,
-                      transition: {
-                        y: {
-                          repeat: Infinity,
-                          duration: 4 + index * 0.5,
-                          ease: 'easeInOut',
-                        },
+                    y: [0, index % 2 === 0 ? -6 : 6, 0],
+                    scale: project.baseScale,
+                    rotate: project.baseRotate,
+                    transition: {
+                      y: {
+                        repeat: Infinity,
+                        duration: 4 + index * 0.5,
+                        ease: 'easeInOut',
                       },
-                    }
+                    },
+                  }
                   : {
-                      scale: isHovered ? 1.05 : isAnotherHovered ? project.baseScale * 0.98 : project.baseScale,
-                      rotate: isHovered ? 0 : project.baseRotate,
-                      opacity: isAnotherHovered ? 0.55 : 1,
-                      filter: isAnotherHovered ? 'brightness(0.85) blur(0.5px)' : 'brightness(1) blur(0px)',
-                      translateZ: isHovered ? 45 : 0,
-                    }
+                    scale: isHovered ? 1.05 : isAnotherHovered ? project.baseScale * 0.98 : project.baseScale,
+                    rotate: isHovered ? 0 : project.baseRotate,
+                    opacity: isAnotherHovered ? 0.55 : 1,
+                    filter: isAnotherHovered ? 'brightness(0.85) blur(0.5px)' : 'brightness(1) blur(0px)',
+                    translateZ: isHovered ? 45 : 0,
+                  }
               }
               transition={{
                 duration: 0.3,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className={`absolute w-[82%] sm:w-[80%] aspect-[16/10] rounded-2xl overflow-hidden cursor-pointer transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950 ${
-                isHovered
-                  ? 'border-2 border-cyan-400 shadow-[0_20px_50px_rgba(6,182,212,0.35)] ring-1 ring-cyan-400/50'
-                  : 'border border-zinc-200/80 dark:border-zinc-700/70 shadow-2xl bg-zinc-950'
-              }`}
+              className={`absolute w-[82%] sm:w-[80%] aspect-[16/10] rounded-2xl overflow-hidden cursor-pointer transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950 ${isHovered
+                ? 'border-2 border-cyan-400 shadow-[0_20px_50px_rgba(6,182,212,0.35)] ring-1 ring-cyan-400/50'
+                : 'border border-zinc-200/80 dark:border-zinc-700/70 shadow-2xl bg-zinc-950'
+                }`}
             >
               {/* Mini Browser Window Top Bar */}
               <div className="flex items-center justify-between px-3 py-1.5 bg-zinc-900/95 border-b border-zinc-800 text-[11px] text-zinc-400">
@@ -241,11 +240,10 @@ export const ProjectTiltStack: React.FC = () => {
 
                 {/* Project Badge / Hover Detail Banner */}
                 <div
-                  className={`absolute bottom-2 left-2 right-2 p-2 rounded-xl backdrop-blur-md transition-all duration-300 flex items-center justify-between gap-2 ${
-                    isHovered
-                      ? 'bg-zinc-950/90 border border-cyan-500/40 opacity-100 translate-y-0'
-                      : 'bg-zinc-950/70 border border-zinc-800/80 opacity-90'
-                  }`}
+                  className={`absolute bottom-2 left-2 right-2 p-2 rounded-xl backdrop-blur-md transition-all duration-300 flex items-center justify-between gap-2 ${isHovered
+                    ? 'bg-zinc-950/90 border border-cyan-500/40 opacity-100 translate-y-0'
+                    : 'bg-zinc-950/70 border border-zinc-800/80 opacity-90'
+                    }`}
                 >
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">

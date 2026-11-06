@@ -172,7 +172,7 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
 
         ctx.beginPath();
         if (isPerturbed && !isTouch) {
-          const glowAlpha = Math.min(0.9, (distanceFromBase / 15) * intensity);
+          // const glowAlpha = Math.min(0.9, (distanceFromBase / 15) * intensity);
           ctx.fillStyle = color;
           ctx.shadowColor = color;
           ctx.shadowBlur = 6;
